@@ -17,12 +17,12 @@ use App\Http\Controllers\AuthController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('auth.login');
-    Route::post('/login', [AuthController::class, 'authenticate']);
+    Route::post('/login', [AuthController::class, 'authenticate']) -> name('login');
 });
 
 Route::get('/', function () {
     $data = [
-        'title' => 'Ebuddy'
+        'title' => 'Home'
     ];
 
     return view('home.home', $data);
@@ -30,11 +30,21 @@ Route::get('/', function () {
 
 Route::get('/about', function () {
     $data = [
-        'title' => 'Ebuddy'
+        'title' => 'About'
     ];
 
     return view('home.about', $data);
 });
+
+Route::get('/dashboard', function () {
+    $data = [
+        'title' => 'dashboard'
+    ];
+
+    return view('dashboard.index', $data);
+});
+
+
 
 
 
