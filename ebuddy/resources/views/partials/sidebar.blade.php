@@ -89,7 +89,7 @@
     <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
         aria-labelledby="sidebarMenuLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="sidebarMenuLabel">Company name</h5>
+            <h5 class="offcanvas-title" id="sidebarMenuLabel">Ebuddy</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                 data-bs-target="#sidebarMenu" aria-label="Close"></button>
         </div>
@@ -109,7 +109,7 @@
                         <svg class="bi">
                             <use xlink:href="#file-earmark" />
                         </svg>
-                        Orders
+                        Absensi
                     </a>
                 </li>
                 <li class="nav-item">
@@ -117,7 +117,7 @@
                         <svg class="bi">
                             <use xlink:href="#cart" />
                         </svg>
-                        Products
+                        Buat Surat
                     </a>
                 </li>
                 <li class="nav-item">
@@ -125,7 +125,7 @@
                         <svg class="bi">
                             <use xlink:href="#people" />
                         </svg>
-                        Customers
+                        Tambah Meeting Notes
                     </a>
                 </li>
                 <li class="nav-item">

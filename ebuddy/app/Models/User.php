@@ -18,6 +18,10 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    const ADMIN_ROLE_ID = 1;
+    const OPERATOR_ROLE_ID = 2;
+    const USER_ROLE_ID = 3;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -61,5 +65,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+
+    public function isUser()
+    {
+        return $this->role_id === self::USER_ROLE_ID;
     }
 }

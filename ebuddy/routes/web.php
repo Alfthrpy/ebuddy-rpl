@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 
 
 
@@ -16,15 +17,19 @@ use App\Http\Controllers\AuthController;
 // });
 
 Route::middleware('guest')->group(function () {
-    Route::get('/login', [AuthController::class, 'index'])->name('auth.login');
-    Route::post('/login', [AuthController::class, 'authenticate']) -> name('login');
+    Route::get('/login', [AuthController::class, 'index'])->name('index.login');
+    Route::post('/login', [AuthController::class, 'auth']) -> name('auth.login');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard-pegawai', [HomeController::class, 'index'])->name('dashboard.pegawai');
+    Route::post('/dashboard-pejabat', [HomeController::class, 'index']) -> name('dashboard.pejabat');
 });
 
 Route::get('/', function () {
     $data = [
         'title' => 'Home'
     ];
-
     return view('home.home', $data);
 });
 
@@ -32,17 +37,11 @@ Route::get('/about', function () {
     $data = [
         'title' => 'About'
     ];
-
     return view('home.about', $data);
 });
 
-Route::get('/dashboard', function () {
-    $data = [
-        'title' => 'dashboard'
-    ];
 
-    return view('dashboard.index', $data);
-});
+
 
 
 

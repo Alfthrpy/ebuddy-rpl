@@ -15,7 +15,7 @@
             </li>
           </ul>
           <div class="d-flex" role="search">
-            <a class="btn btn-light" href="{{ route('auth.login') }}">Login</a>
+            <a class="btn btn-light" href="{{ route('index.login') }}">Login</a>
           </div>
         </div>
       </div>
