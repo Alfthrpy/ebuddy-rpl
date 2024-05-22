@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\Holiday;
+use App\Models\Permission;
 use App\Models\Presence;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
@@ -17,9 +19,26 @@ class HomeController extends Controller
             ->get()
             ->sortByDesc('data.is_end')
             ->sortByDesc('data.is_start');
-
+        
         return view('dashboard.pegawai', [
             "title" => "Beranda",
+            'position' => 'pegawai',
+            "attendances" => $attendances
+        ]);
+    }
+
+    public function index2()
+    {
+        $attendances = Attendance::query()
+            // ->with('positions')
+            ->forCurrentUser(auth()->user()->position_id)
+            ->get()
+            ->sortByDesc('data.is_end')
+            ->sortByDesc('data.is_start');
+        
+        return view('dashboard.pejabat', [
+            "title" => "Beranda",
+            'position' => 'pejabat',
             "attendances" => $attendances
         ]);
     }

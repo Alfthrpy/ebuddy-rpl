@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Middleware\CheckPosition;
+use App\Http\Middleware\RedirectIfAuthenticated;
 
 
 
@@ -16,14 +18,18 @@ use App\Http\Controllers\HomeController;
 //     })->name('dashboard');
 // });
 
-Route::middleware('guest')->group(function () {
+Route::middleware(RedirectIfAuthenticated::class)->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('index.login');
     Route::post('/login', [AuthController::class, 'auth']) -> name('auth.login');
+
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard-pegawai', [HomeController::class, 'index'])->name('dashboard.pegawai');
-    Route::post('/dashboard-pejabat', [HomeController::class, 'index']) -> name('dashboard.pejabat');
+    Route::get('/dashboard/pegawai', [HomeController::class, 'index'])->name('dashboard.pegawai');
+    Route::get('/dashboard/pejabat', [HomeController::class, 'index2']) -> name('dashboard.pejabat')->middleware(CheckPosition::class);
+
+    Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    
 });
 
 Route::get('/', function () {
@@ -39,6 +45,8 @@ Route::get('/about', function () {
     ];
     return view('home.about', $data);
 });
+
+
 
 
 

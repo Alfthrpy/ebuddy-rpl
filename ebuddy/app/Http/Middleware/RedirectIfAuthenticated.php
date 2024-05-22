@@ -21,8 +21,11 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                logger()->info('Redirecting to /dashboard-pegawai');
-                return redirect('dashboard-pegawai');
+                if(auth()->user()->position_id == 1)
+                return redirect('/dashboard/pegawai');
+                
+            } else {
+                return redirect('/dashboard/pejabat');
             }
         }
 
