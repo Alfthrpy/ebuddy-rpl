@@ -22,7 +22,14 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials, $remember)) {
             request()->session()->regenerate();
-            $redirect_to = auth()->user()->isUser() ? route('dashboard.pegawai') : route('dashboard.index');
+            if(auth()->user()->isPegawai()){
+                $redirect_to = route('dashboard.user',['role'=>'pegawai']);
+            } else if(auth()->user()->isPejabat()) {
+                $redirect_to = route('dashboard.user',['role'=>'pejabat']);
+
+            } else if(auth()->user()->isAdmin()){
+                $redirect_to = route('dashboard.admin',['role'=>'admin']);
+            }
             return redirect($redirect_to)->with('success', 'Login berhasil, silahkan tunggu!');
         }
 

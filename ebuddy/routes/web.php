@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Middleware\CheckRole;
 use App\Http\Middleware\CheckPosition;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
@@ -25,8 +26,9 @@ Route::middleware(RedirectIfAuthenticated::class)->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard/pegawai', [HomeController::class, 'index'])->name('dashboard.pegawai');
-    Route::get('/dashboard/pejabat', [HomeController::class, 'index2']) -> name('dashboard.pejabat')->middleware(CheckPosition::class);
+    Route::get('/dashboard/user', [HomeController::class, 'index'])->name('dashboard.user');
+    Route::get('/dashboard/admin', [HomeController::class, 'index2']) -> name('dashboard.admin')->middleware(CheckRole::class);
+    
 
     Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
     

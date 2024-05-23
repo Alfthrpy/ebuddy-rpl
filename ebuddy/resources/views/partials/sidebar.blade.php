@@ -119,7 +119,7 @@
                         Buat Laporan Dinas Luar
                     </a>
                 </li>
-                @if ($position == 'pejabat')
+                @if (auth()->user()->role_id == 1 or auth()->user()->role_id == 2)
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="#">
                             <svg class="bi">
@@ -152,6 +152,24 @@
                             Laporan Dinas Luar
                         </a>
                     </li>
+                @endif
+                @if (auth()->user()->role_id == 1)
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                        <svg class="bi">
+                            <use xlink:href="#cart" />
+                        </svg>
+                        Absensi
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                        <svg class="bi">
+                            <use xlink:href="#cart" />
+                        </svg>
+                        Kelola Pegawai
+                    </a>
+                </li>
                 @endif
             </ul>
 

@@ -20,28 +20,22 @@ class HomeController extends Controller
             ->sortByDesc('data.is_end')
             ->sortByDesc('data.is_start');
         
-        return view('dashboard.pegawai', [
+        return view('dashboard.user', [
             "title" => "Beranda",
-            'position' => 'pegawai',
             "attendances" => $attendances
         ]);
     }
 
     public function index2()
     {
-        $attendances = Attendance::query()
-            // ->with('positions')
-            ->forCurrentUser(auth()->user()->position_id)
-            ->get()
-            ->sortByDesc('data.is_end')
-            ->sortByDesc('data.is_start');
-        
-        return view('dashboard.pejabat', [
+        return view('dashboard.admin', [
             "title" => "Beranda",
-            'position' => 'pejabat',
-            "attendances" => $attendances
+            'position' => 'admin',
         ]);
     }
+
+
+
 
     public function show(Attendance $attendance)
     {

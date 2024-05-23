@@ -19,8 +19,8 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
 
     const ADMIN_ROLE_ID = 1;
-    const OPERATOR_ROLE_ID = 2;
-    const USER_ROLE_ID = 3;
+    const PEJABAT_ROLE_ID = 2;
+    const PEGAWAI_ROLE_ID = 3;
 
     /**
      * The attributes that are mass assignable.
@@ -68,8 +68,16 @@ class User extends Authenticatable
     }
 
 
-    public function isUser()
+    public function isPegawai()
     {
-        return $this->role_id === self::USER_ROLE_ID;
+        return $this->role_id === self::PEGAWAI_ROLE_ID;
+    }
+
+    public function isAdmin(){
+        return $this->role_id === self::ADMIN_ROLE_ID;
+    }
+
+    public function isPejabat(){
+        return $this->role_id === self::PEJABAT_ROLE_ID;
     }
 }
