@@ -30,12 +30,10 @@ class AuthController extends Controller
             } else if(auth()->user()->isAdmin()){
                 $redirect_to = route('dashboard.admin',['role'=>'admin']);
             }
-            return redirect($redirect_to)->with('success', 'Login berhasil, silahkan tunggu!');
+            return redirect($redirect_to)->with('success', 'Login berhasil!');
         }
 
-        return redirect()->back()->withErrors([
-            'email' => 'Login gagal, silahkan coba lagi!',
-        ])->withInput($request->only('email'));
+        return redirect()->back()->with('error','Login Gagal!');
     }
 
     public function logout()

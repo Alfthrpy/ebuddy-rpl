@@ -1,6 +1,11 @@
-@extends('layouts.home')
+@extends('layouts.base2')
 
-@section('content')
+@push('style')
+<link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+@endpush
+
+@section('base')
+@include('partials.sticky-navbar')
 <div class="container py-5">
     <div class="row">
         <div class="col-md-6 mb-3 mb-md-0">
@@ -21,11 +26,6 @@
                     substr($attendance->data->batas_end_time,0,-3 )}}</span>
             </div>
 
-            @if (!$attendance->data->is_using_qrcode)
-            <livewire:presence-form :attendance="$attendance" :data="$data" :holiday="$holiday">
-                @else
-                @include('home.partials.qrcode-presence')
-                @endif
         </div>
         <div class="col-md-6">
             <h5 class="mb-3">Histori 30 Hari Terakhir</h5>

@@ -22,7 +22,6 @@ class Attendance extends Model
         'batas_start_time',
         'end_time',
         'batas_end_time',
-        'code'
     ];
 
     protected $appends = ['data'];
