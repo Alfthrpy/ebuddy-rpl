@@ -53,9 +53,12 @@ class AttendanceFormCreate extends Component
 
         // dd($this->position_ids);
         // $attendance->positions()->sync($this->position_ids);
-        foreach ($this->position_ids as $position_id) {
+        // dd($this->position_ids);
+        foreach ($this->position_ids as $position_id => $value) {
             $attendance->positions()->attach($position_id);
         }
+
+        // dd($attendance);
 
         // $this->reset('attendance', 'position_ids');
         redirect()->route('attendances.index')->with('success', "Data absensi berhasil ditambahkan.");

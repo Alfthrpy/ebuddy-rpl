@@ -37,9 +37,7 @@ final class AttendanceTable extends PowerGridComponent
 
     public function datasource(): Builder
     {
-        return Attendance::query()
-        ->with('positions')
-        ->select('attendances.*');
+        return Attendance::with('positions');
     }
 
     public function relationSearch(): array
@@ -58,8 +56,8 @@ final class AttendanceTable extends PowerGridComponent
             ->add('end_time')
             ->add('batas_end_time')
             ->add('created_at')
-            ->add('positions', function ($model) {
-                return $model->positions->pluck('name')->implode(', ');
+            ->add('positions', function ($row) {
+                return $row->positions->pluck('name')->implode(', ');
             });
     }
 
