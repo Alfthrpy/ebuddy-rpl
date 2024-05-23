@@ -34,6 +34,7 @@
                                     <div class="card-body">
                                         <ul class="list-group">
                                             @foreach ($attendances as $attendance)
+                                            
                                                 <a href="{{ route('dashboard.show', $attendance->id) }}"
                                                     class="list-group-item d-flex justify-content-between align-items-start py-3">
                                                     <div class="ms-2 me-auto">

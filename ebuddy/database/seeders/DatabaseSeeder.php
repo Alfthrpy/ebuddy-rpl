@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Position;
 use App\Models\Role;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,36 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        $user1 = User::create([
-            'name' => 'Pegawai1',
-            'email' => 'pegawai1@gmail.com',
-            'password' => bcrypt('password'),
-            'phone' => '123-456-789',
-            'role_id' => 3,
-            'position_id' => 1,
-        ]);
-        $user2 = User::create([
-            'name' => 'Pejabat1',
-            'email' => 'pejabat1@gmail.com',
-            'phone' => '124-356-789',
-            'password' => bcrypt('password'),
-            'role_id' => 2,
-            'position_id' => 1,
-        ]);
-        $user3 = User::create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'phone' => '143-256-789',
-            'password' => bcrypt('password'),
-            'role_id' => 1,
-            'position_id' => 1,
-        ]);
-
-        $position1 = Position::create([
-            'name' => 'staff',
-        ]);
-
+        // Memasukkan data roles terlebih dahulu
         $role1 = Role::create([
             'name' => 'Admin',
         ]);
@@ -54,5 +24,45 @@ class DatabaseSeeder extends Seeder
         $role3 = Role::create([
             'name' => 'Pegawai',
         ]);
+
+        // Memasukkan data position
+        $position1 = Position::create([
+            'name' => 'staff',
+        ]);
+
+        $position2 = Position::create([
+            'name' => 'Sekretaris',
+        ]);
+
+        // Memasukkan data user
+        $user1 = User::create([
+            'name' => 'Pegawai1',
+            'email' => 'pegawai1@gmail.com',
+            'password' => bcrypt('password'),
+            'phone' => '123-456-789',
+            'role_id' => 3, // nilai role_id harus sesuai dengan data yang ada di tabel roles
+            'position_id' => 1,
+        ]);
+
+        $user2 = User::create([
+            'name' => 'Pejabat1',
+            'email' => 'pejabat1@gmail.com',
+            'phone' => '124-356-789',
+            'password' => bcrypt('password'),
+            'role_id' => 2, // nilai role_id harus sesuai dengan data yang ada di tabel roles
+            'position_id' => 2,
+        ]);
+
+        $user3 = User::create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'phone' => '143-256-789',
+            'password' => bcrypt('password'),
+            'role_id' => 1, // nilai role_id harus sesuai dengan data yang ada di tabel roles
+            'position_id' => 1,
+        ]);
+
+        // Uncomment baris berikut jika ingin membuat user menggunakan factory
+        // User::factory(10)->create();
     }
 }

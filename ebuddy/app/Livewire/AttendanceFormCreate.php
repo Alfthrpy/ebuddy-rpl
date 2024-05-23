@@ -17,45 +17,49 @@ class AttendanceFormCreate extends Component
         'end_time' => '',
         'batas_end_time' => '',
     ];
-    public $positions;
+
     public $position_ids = [];
 
+    public $positions;
+
     protected $rules = [
-        'attendance.title' => 'required|string|min:6',
-        'attendance.description' => 'required|string|max:500',
+        'attendance.title' => 'required|string|max:255',
+        'attendance.description' => 'nullable|string',
         'attendance.start_time' => 'required|date_format:H:i',
-        'attendance.batas_start_time' => 'required|date_format:H:i|after:start_time',
+        'attendance.batas_start_time' => 'required|date_format:H:i',
         'attendance.end_time' => 'required|date_format:H:i',
-        'attendance.batas_end_time' => 'required|date_format:H:i|after:end_time',
-        'attendance.code' => 'sometimes|nullable|boolean',
-        'position_ids' => 'required|array',
-        'position_ids.*' => 'required|distinct|numeric',
+        'attendance.batas_end_time' => 'required|date_format:H:i',
+        'position_ids' => 'required|array|min:1',
+        'position_ids.*' => 'exists:positions,id',
     ];
 
     public function mount()
     {
-        $this->positions = Position::query()
-            ->select(['id', 'name'])
-            ->get();
+        $this->positions = Position::query()->select(['id', 'name'])->get();
     }
 
     public function save()
     {
-        // filter value before validate
-        $this->position_ids = array_filter($this->position_ids, function ($id) {
-            return is_numeric($id);
-        });
-
-        $position_ids = array_values($this->position_ids);
         $this->validate();
 
+        $attendance = Attendance::create([
+            'title' => $this->attendance['title'],
+            'description' => $this->attendance['description'],
+            'start_time' => $this->attendance['start_time'],
+            'batas_start_time' => $this->attendance['batas_start_time'],
+            'end_time' => $this->attendance['end_time'],
+            'batas_end_time' => $this->attendance['batas_end_time'],
+        ]);
 
-        $attendance = Attendance::create($this->attendance);
-        $attendance->positions()->attach($position_ids);
+        // dd($this->position_ids);
+        // $attendance->positions()->sync($this->position_ids);
+        foreach ($this->position_ids as $position_id) {
+            $attendance->positions()->attach($position_id);
+        }
 
-        redirect()->route('attendances.index')->with('success', 'Data absensi berhasil ditambahkan.');
+        // $this->reset('attendance', 'position_ids');
+        redirect()->route('attendances.index')->with('success', "Data absensi berhasil ditambahkan.");
     }
-
     public function render()
     {
         return view('livewire.attendance-form-create');

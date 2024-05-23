@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/admin', [DashboardController::class, 'index']) -> name('dashboard.admin')->middleware(CheckRole::class);
     Route::resource('/attendances', AttendanceController::class)->only(['index', 'create'])->middleware(CheckRole::class);
     Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-    Route::get('/absensi/user', [HomeController::class, 'show'])->name('dashboard.show');
+    Route::get('/absensi/{attendance}', [HomeController::class, 'show'])->name('dashboard.show');
     
 });
 
