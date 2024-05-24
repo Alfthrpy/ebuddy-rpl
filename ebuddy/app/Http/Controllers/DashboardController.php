@@ -13,7 +13,9 @@ class DashboardController extends Controller
         return view('dashboard.admin', [
             "title" => "Dashboard",
             "positionCount" => Position::count(),
-            "userCount" => User::count()
+            "userCount" => User::count(),
+            "role" => 'admin',
+            'position' => 'admin'
         ]);
     }
 }

@@ -10,7 +10,9 @@ class AttendanceController extends Controller
     public function index()
     {
         return view('attendances.index', [
-            "title" => "Absensi"
+            "title" => "Absensi",
+            'role' => 'admin',
+            'position' => 'admin'
         ]);
     }
 

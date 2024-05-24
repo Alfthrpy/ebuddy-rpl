@@ -20,9 +20,13 @@ class HomeController extends Controller
             ->sortByDesc('data.is_end')
             ->sortByDesc('data.is_start');
         
+        $role = auth()->user()->role_id == 2 ? 'pejabat' : 'pegawai';
+
         return view('dashboard.user', [
             "title" => "Beranda",
-            "attendances" => $attendances
+            "attendances" => $attendances,
+            "role" => 'user',
+            "position" => $role
         ]);
     }
 
