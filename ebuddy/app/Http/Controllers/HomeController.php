@@ -77,12 +77,16 @@ class HomeController extends Controller
 
         $priodDate = array_slice(array_reverse($priodDate), 0, 30);
 
+        $position = auth()->user()->position_id == 2 ? 'pejabat' : 'pegawai';
+
         return view('dashboard.show', [
             "title" => "Informasi Absensi Kehadiran",
             "attendance" => $attendance,
             "data" => $data,
             'history' => $history,
-            'priodDate' => $priodDate
+            'priodDate' => $priodDate,
+            'role' =>  'user',
+            'position' => 'pegawai'
         ]);
     }
 }

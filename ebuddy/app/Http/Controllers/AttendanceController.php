@@ -19,7 +19,9 @@ class AttendanceController extends Controller
     public function create()
     {
         return view('attendances.create', [
-            "title" => "Tambah Data Absensi"
+            "title" => "Tambah Data Absensi",
+            'role' => 'admin',
+            'position' => 'admin'
         ]);
     }
 
