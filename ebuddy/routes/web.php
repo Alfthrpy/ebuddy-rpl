@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\PresenceController;
 use App\Http\Middleware\CheckRole;
 use App\Http\Middleware\CheckPosition;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -31,9 +32,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/user', [HomeController::class, 'index'])->name('dashboard.user');
     Route::get('/dashboard/admin', [DashboardController::class, 'index']) -> name('dashboard.admin')->middleware(CheckRole::class);
     Route::resource('/attendances', AttendanceController::class)->only(['index', 'create'])->middleware(CheckRole::class);
-    Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-    Route::get('/absensi/{attendance}', [HomeController::class, 'show'])->name('dashboard.show');
+    Route::get('/attendances/edit', [AttendanceController::class, 'edit'])->name('attendances.edit');
+    Route::get('/attendances/delete/{id}', [AttendanceController::class, 'delete'])->name('attendances.destroy')->middleware(CheckRole::class);;
     
+    Route::get('/absensi/{attendance}', [HomeController::class, 'show'])->name('dashboard.show');
+    Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+    
+    Route::resource('/presences', PresenceController::class)->only(['index']);
+    Route::get('/presences/{attendance}', [PresenceController::class, 'show'])->name('presences.show');
+    // not present data
+    Route::get('/presences/{attendance}/not-present', [PresenceController::class, 'notPresent'])->name('presences.not-present');
+    Route::post('/presences/{attendance}/not-present', [PresenceController::class, 'notPresent']);
+    // present (url untuk menambahkan/mengubah user yang tidak hadir menjadi hadir)
+    Route::post('/presences/{attendance}/present', [PresenceController::class, 'presentUser'])->name('presences.present');
+    Route::post('/presences/{attendance}/acceptPermission', [PresenceController::class, 'acceptPermission'])->name('presences.acceptPermission');
 });
 
 Route::get('/', function () {

@@ -15,11 +15,12 @@ use PowerComponents\LivewirePowerGrid\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Traits\WithExport;
+use Livewire\Attributes\On;
 
 final class AttendanceTable extends PowerGridComponent
 {
     use WithExport;
-
+    public $checked = [];
     public function setUp(): array
     {
         $this->showCheckBox();
@@ -33,7 +34,10 @@ final class AttendanceTable extends PowerGridComponent
                 ->showPerPage()
                 ->showRecordCount(),
         ];
+
     }
+
+
 
     public function datasource(): Builder
     {
@@ -107,20 +111,19 @@ final class AttendanceTable extends PowerGridComponent
         ];
     }
 
-    #[\Livewire\Attributes\On('edit')]
-    public function edit($rowId): void
-    {
-        $this->js('alert('.$rowId.')');
-    }
 
     public function actions(Attendance $row): array
     {
         return [
-            Button::add('edit')
-                ->slot('Edit: '.$row->id)
-                ->id()
-                ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->dispatch('edit', ['rowId' => $row->id])
+            Button::make('edit', 'Edit')
+            ->class('badge text-bg-success')
+            ->target('')
+            ->route('attendances.edit', ['id' => $row->id]),
+
+            Button::make('delete', 'Hapus')
+                ->class('badge text-bg-danger')
+                ->target('')
+                ->route('attendances.destroy', ['id' => $row->id])
         ];
     }
 
@@ -135,4 +138,26 @@ final class AttendanceTable extends PowerGridComponent
         ];
     }
     */
+
+    #[On('bulkDelete.{tableName}')]
+    public function bulkDelete(): void
+    {
+        $this->js('alert(window.pgBulkActions.get(\'' . $this->tableName . '\'))');
+    }
+
+    #[\Livewire\Attributes\On('deleteRecord')]
+    public function deleteRecord($data)
+    {
+        $attendance = Attendance::find($data['id']);
+        if ($attendance) {
+            $attendance->delete();
+            session()->flash('message', 'Data absensi berhasil dihapus.');
+        } else {
+            session()->flash('error', 'Data absensi tidak ditemukan.');
+        }
+
+        // Optional: You may want to refresh the data table after deletion
+        $this->emit('refreshDatatable');
+    }
+
 }

@@ -80,4 +80,15 @@ class User extends Authenticatable
     public function isPejabat(){
         return $this->role_id === self::PEJABAT_ROLE_ID;
     }
+
+    public function position()
+    {
+        return $this->belongsTo(Position::class);
+    }
+
+    public function scopeOnlyEmployees($query)
+    {
+        return $query->where('role_id', self::PEJABAT_ROLE_ID)
+        ->orWhere('role_id', self::PEGAWAI_ROLE_ID);
+    }
 }

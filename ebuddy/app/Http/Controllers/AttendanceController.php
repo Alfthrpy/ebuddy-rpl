@@ -29,7 +29,20 @@ class AttendanceController extends Controller
     {
         return view('attendances.edit', [
             "title" => "Edit Data Absensi",
-            "attendance" => Attendance::findOrFail(request('id'))
+            "attendance" => Attendance::findOrFail(request('id')),
+            'role' => 'admin',
+            'position' => 'admin'
         ]);
+    }
+
+    public function delete($id)
+    {
+        $attendance = Attendance::find($id);
+        if ($attendance) {
+            $attendance->delete();
+            return redirect()->route('attendances.index')->with('success', 'Data absensi berhasil dihapus.');
+        } else {
+            return redirect()->route('attendances.index')->with('error', 'Data absensi tidak ditemukan.');
+        }
     }
 }

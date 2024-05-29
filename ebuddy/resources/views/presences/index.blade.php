@@ -1,7 +1,7 @@
 @extends('layouts.base2')
 
 {{-- @push('style')
-    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+<link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
 @endpush --}}
 
 <style>
@@ -63,25 +63,23 @@
         <div class="container-fluid">
             <div class="row">
                 @include('partials.sidebar')
-
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mb-3">
-                    @if (session()->has('success'))
-                        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                            {{ session('success') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    @endif
+                <div class="col-md-7">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <h1 class="h2">Absensi</h1>
-
-                        <a href="{{ route('attendances.create') }}" class="btn btn-sm btn-secondary">
-                            <span data-feather="plus-circle" class="align-text-bottom me-1"></span>
-                            Tambah Data Absensi
-                        </a>
-
+                        <h1 class="h2">Daftar Kehadiran</h1>
                     </div>
-                    <livewire:attendance-table />
-                </main>
+                    <ul class="list-group">
+                        @foreach ($attendances as $attendance)
+                        <a href="{{ route('presences.show', $attendance->id) }}"
+                            class="list-group-item d-flex justify-content-between align-items-start py-3">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">{{ $attendance->title }}</div>
+                                <p class="mb-0">{{ $attendance->description }}</p>
+                            </div>
+                            @include('partials.attendance-badges')
+                        </a>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
         </div>
 
