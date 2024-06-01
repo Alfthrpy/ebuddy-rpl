@@ -31,6 +31,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'role_id',
+        'position_id',
     ];
 
     /**
@@ -81,6 +84,11 @@ class User extends Authenticatable
         return $this->role_id === self::PEJABAT_ROLE_ID;
     }
 
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
     public function position()
     {
         return $this->belongsTo(Position::class);
@@ -91,4 +99,6 @@ class User extends Authenticatable
         return $query->where('role_id', self::PEJABAT_ROLE_ID)
         ->orWhere('role_id', self::PEGAWAI_ROLE_ID);
     }
+
+    
 }

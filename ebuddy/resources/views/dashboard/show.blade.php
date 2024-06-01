@@ -126,11 +126,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if ($histo->is_permission)
-                                                    <div class="badge text-bg-warning">Izin</div>
-                                                    @else
                                                     <div class="badge text-bg-success">Hadir</div>
-                                                    @endif
                                                 </td>
                                                 @endif
                                             </tr>

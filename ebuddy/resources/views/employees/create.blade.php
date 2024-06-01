@@ -12,8 +12,9 @@
     }
 
     /*
-    * Sidebar
-    */
+ * Sidebar
+ */
+
     @media (min-width: 768px) {
         .sidebar .offcanvas-lg {
             position: -webkit-sticky;
@@ -40,8 +41,9 @@
     }
 
     /*
-    * Navbar
-    */
+ * Navbar
+ */
+
     .navbar-brand {
         padding-top: .75rem;
         padding-bottom: .75rem;
@@ -64,17 +66,9 @@
 
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mb-3">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <h1 class="h2">Update Password</h1>
-                        <div class="btn-toolbar mb-2 mb-md-0">
-                            <div>
-                                <a href="{{ route('employees.index') }}" class="btn btn-sm btn-light">
-                                    <span data-feather="arrow-left-circle" class="align-text-bottom"></span>
-                                    Kembali
-                                </a>
-                            </div>
-                        </div>
+                        <h1 class="h2">Tambah Absensi</h1>
                     </div>
-                    <livewire:update-password />
+                    <livewire:employee-create-form />
                 </main>
             </div>
         </div>

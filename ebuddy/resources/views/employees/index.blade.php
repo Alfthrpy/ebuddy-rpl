@@ -12,8 +12,9 @@
     }
 
     /*
-    * Sidebar
-    */
+ * Sidebar
+ */
+
     @media (min-width: 768px) {
         .sidebar .offcanvas-lg {
             position: -webkit-sticky;
@@ -40,8 +41,9 @@
     }
 
     /*
-    * Navbar
-    */
+ * Navbar
+ */
+
     .navbar-brand {
         padding-top: .75rem;
         padding-bottom: .75rem;
@@ -63,18 +65,22 @@
                 @include('partials.sidebar')
 
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mb-3">
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <h1 class="h2">Update Password</h1>
-                        <div class="btn-toolbar mb-2 mb-md-0">
-                            <div>
-                                <a href="{{ route('employees.index') }}" class="btn btn-sm btn-light">
-                                    <span data-feather="arrow-left-circle" class="align-text-bottom"></span>
-                                    Kembali
-                                </a>
-                            </div>
+                    @if (session()->has('success'))
+                        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
+                    @endif
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 class="h2">Data User</h1>
+
+                        <a href="{{ route('employees.create') }}" class="btn btn-sm btn-secondary">
+                            <span data-feather="plus-circle" class="align-text-bottom me-1"></span>
+                            Tambah Pegawai
+                        </a>
+
                     </div>
-                    <livewire:update-password />
+                    <livewire:user-table />
                 </main>
             </div>
         </div>

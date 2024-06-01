@@ -6,6 +6,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\PresenceController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Middleware\CheckRole;
 use App\Http\Middleware\CheckPosition;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -36,6 +38,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/attendances/delete/{id}', [AttendanceController::class, 'delete'])->name('attendances.destroy')->middleware(CheckRole::class);;
     
     Route::get('/absensi/{attendance}', [HomeController::class, 'show'])->name('dashboard.show');
+    Route::resource('/employees', EmployeeController::class)->only(['index', 'create']);
+    Route::get('/employees/edit/{id}', [EmployeeController::class, 'edit'])->name('employees.edit');
+    Route::get('/employees/delete/{id}', [EmployeeController::class, 'delete'])->name('employees.destroy')->middleware(CheckRole::class);
+    Route::get('/password-change/{role}',[PasswordController::class, 'ShowChangeForm'])->name('password.show');
     Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
     

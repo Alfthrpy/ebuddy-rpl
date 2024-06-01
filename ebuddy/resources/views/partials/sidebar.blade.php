@@ -119,6 +119,17 @@
                         Buat Laporan Dinas Luar
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="{{ route('password.show', ['role' => auth()->user()->role->name]) }}">
+                        <svg class="bi">
+                            <use xlink:href="#cart" />
+                        </svg>
+                        Ubah Sandi
+                    </a>
+                </li>
+
+
                 @if (auth()->user()->role_id == 1 or auth()->user()->role_id == 2)
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="#">
@@ -171,7 +182,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                    <a class="nav-link d-flex align-items-center gap-2" href="/employees">
                         <svg class="bi">
                             <use xlink:href="#cart" />
                         </svg>
