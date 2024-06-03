@@ -99,6 +99,4 @@ class User extends Authenticatable
         return $query->where('role_id', self::PEJABAT_ROLE_ID)
         ->orWhere('role_id', self::PEGAWAI_ROLE_ID);
     }
-
-    
 }

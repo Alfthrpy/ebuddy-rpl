@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\OvertimeController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Middleware\CheckRole;
 use App\Http\Middleware\CheckPosition;
@@ -30,6 +31,7 @@ Route::middleware(RedirectIfAuthenticated::class)->group(function () {
 
 });
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard/user', [HomeController::class, 'index'])->name('dashboard.user');
     Route::get('/dashboard/admin', [DashboardController::class, 'index']) -> name('dashboard.admin')->middleware(CheckRole::class);
@@ -42,6 +44,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/employees/edit/{id}', [EmployeeController::class, 'edit'])->name('employees.edit');
     Route::get('/employees/delete/{id}', [EmployeeController::class, 'delete'])->name('employees.destroy')->middleware(CheckRole::class);
     Route::get('/password-change/{role}',[PasswordController::class, 'ShowChangeForm'])->name('password.show');
+
+    Route::resource('/overtimes',OvertimeController::class)->only(['index', 'create']);
+    Route::get('/overtimes/report/{condition}', [OvertimeController::class, 'showReport'])->name('overtimes.report');
+    Route::get('overtimes/report/show/{id}', [OvertimeController::class, 'show'])->name('overtimes.show');
+    Route::get('overtimes/report/edit/{id}', [OvertimeController::class, 'edit'])->name('overtimes.edit');
+    Route::get('overtimes/report/delete/{id}', [OvertimeController::class, 'delete'])->name('overtimes.destroy');
+    Route::post('/overtimes/{overtime}/approve', [OvertimeController::class, 'approve'])->name('overtimes.approve');
+    Route::post('/overtimes/{overtime}/reject', [OvertimeController::class, 'reject'])->name('overtimes.reject');
     Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
     

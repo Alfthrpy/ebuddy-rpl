@@ -18,6 +18,7 @@
     </symbol>
 </svg>
 
+
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="calendar3" viewBox="0 0 16 16">
         <path
@@ -25,10 +26,29 @@
         <path
             d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
     </symbol>
-    <symbol id="cart" viewBox="0 0 16 16">
+    <symbol id="report" viewBox="0 4 50 50  ">
         <path
-            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            d="M21.25 15.77h-4.84a1 1 0 0 0-1 1v4.83a1 1 0 0 0 1 1h4.84a1 1 0 0 0 1-1v-4.83a1 1 0 0 0-1-1zm-1 4.83h-2.84v-2.83h2.84zm1 5.88h-4.84a1 1 0 0 0-1 1v4.83a1 1 0 0 0 1 1h4.84a1 1 0 0 0 1-1v-4.83a1 1 0 0 0-1-1zm-1 4.83h-2.84v-2.83h2.84zm1 5.88h-4.84a1 1 0 0 0-1 1V43a1 1 0 0 0 1 1h4.84a1 1 0 0 0 1-1v-4.81a1 1 0 0 0-1-1zm-1 4.83h-2.84v-2.83h2.84zm4.83-23.84a1 1 0 0 0 0 2h11.51a1 1 0 0 0 0-2zm11.51 10.71H25.08a1 1 0 0 0 0 2h11.51a1 1 0 0 0 0-2zm0 10.72H25.08a1 1 0 0 0 0 2h11.51a1 1 0 0 0 0-2z">
+        </path>
+        <path
+            d="M29.67 2.5h-6.34a1 1 0 0 0-1 1v3.36H20.5a2.89 2.89 0 0 0-2.85 2.43h-6.37a1 1 0 0 0-1 1V49.5a1 1 0 0 0 1 1h30.44a1 1 0 0 0 1-1V10.29a1 1 0 0 0-1-1h-6.36a2.91 2.91 0 0 0-2.86-2.43h-1.83V3.5a1 1 0 0 0-1-1Zm11 46H12.28V11.29h5.32v1a1 1 0 0 0 1 1h15.8a1 1 0 0 0 1-1v-1h5.32ZM32.5 8.86a.9.9 0 0 1 .9.91v1.56H19.6V9.77a.9.9 0 0 1 .9-.91h2.83a1 1 0 0 0 1-1V4.5h4.34v3.36a1 1 0 0 0 1 1Z" />
     </symbol>
+
+    <symbol id="password" viewBox="0 0 32 32">
+        <path
+            d="M25 1L12.611 13.388A9 9 0 0 0 1 22a9 9 0 0 0 9 9 9 9 0 0 0 8.611-11.612L21 17v-2h2l8-8V1h-6zm4 5.171L22.172 13H19v3.171l-1.803 1.802-.848.848.348 1.147c.201.662.303 1.345.303 2.032 0 3.86-3.141 7-7 7s-7-3.14-7-7 3.141-7 7-7c.686 0 1.37.102 2.031.302l1.146.348.848-.848L25.828 3H29v3.171z">
+        </path>
+        <circle cx="8" cy="24" r="2"></circle>
+        <path d="M20.646 10.647l6-6 .707.707-6 6z"></path>
+    </symbol>
+
+
+
+    <symbol id="dashboard" viewBox="0 0 21 21">
+        <path
+            d="M4 13h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1zm0 8h6c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1zm10 0h6c.55 0 1-.45 1-1v-8c0-.55-.45-1-1-1h-6c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1zM13 4v4c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1h-6c-.55 0-1 .45-1 1z" />
+    </symbol>
+
     <symbol id="chevron-right" viewBox="0 0 16 16">
         <path fill-rule="evenodd"
             d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
@@ -83,132 +103,166 @@
     </symbol>
 </svg>
 
+<style>
+    .custom-nav-pills .nav-link {
+        color: #000;
+        /* Warna teks hitam */
+        border-radius: 0.25rem;
+        /* Sedikit border radius untuk sudut membulat */
+        margin-bottom: 0.3rem;
+        /* Spasi bawah antar item */
+        transition: background-color 0.3s ease;
+        /* Animasi transisi untuk latar belakang */
+    }
+
+    .custom-nav-pills .nav-link:hover {
+        color: #fff;
+        /* Warna teks saat hover putih */
+        background-color: #adb5bd;
+        /* Warna latar belakang saat hover abu-abu gelap */
+    }
+
+    .custom-nav-pills .nav-link.active {
+        color: #fff;
+        /* Warna teks untuk item aktif putih */
+        background-color: #6c757d;
+        /* Warna latar belakang untuk item aktif abu-abu */
+        border-color: #6c757d;
+        /* Warna border untuk item aktif abu-abu */
+    }
+
+    .custom-nav-pills .nav-link:focus {
+        box-shadow: none;
+        /* Hilangkan shadow saat fokus */
+    }
+
+    .custom-nav-pills .nav-link.disabled {
+        color: #6c757d;
+        /* Warna teks untuk item pemisah */
+        background-color: transparent;
+        /* Latar belakang transparan */
+        font-weight: bold;
+        /* Cetak tebal */
+    }
+</style>
 
 
-<div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary ">
-    <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
-        aria-labelledby="sidebarMenuLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="sidebarMenuLabel">Ebuddy</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
-                aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" aria-current="page" href="/dashboard/{{ $role }}?role={{ $position }}">
-                        <svg class="bi">
-                            <use xlink:href="#house-fill" />
-                        </svg>
-                        Dashboard
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                        <svg class="bi">
-                            <use xlink:href="#file-earmark" />
-                        </svg>
-                        Buat Surat
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                        <svg class="bi">
-                            <use xlink:href="#cart" />
-                        </svg>
-                        Buat Laporan Dinas Luar
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="{{ route('password.show', ['role' => auth()->user()->role->name]) }}">
-                        <svg class="bi">
-                            <use xlink:href="#cart" />
-                        </svg>
-                        Ubah Sandi
-                    </a>
-                </li>
-
-
-                @if (auth()->user()->role_id == 1 or auth()->user()->role_id == 2)
+<div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+    <div class="d-flex flex-column flex-shrink-0 p-2">
+        <div class="offcanvas-md offcanvas-end bg-body-dark" tabindex="-1" id="sidebarMenu"
+            aria-labelledby="sidebarMenuLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="sidebarMenuLabel">Ebuddy</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+                <ul class="nav nav-pills custom-nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-2" href="#">
+                        <a class="nav-link {{ request()->routeIs('dashboard.*') ? 'active' : '' }} d-flex align-items-center gap-2 text-tertiary"
+                            aria-current="page" href="/dashboard/{{ $role }}?role={{ $position }}">
                             <svg class="bi">
-                                <use xlink:href="#cart" />
+                                <use xlink:href="#dashboard" />
                             </svg>
-                            Tandatangani Surat
+                            Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-2" href="#">
+                        <span class="nav-link disabled d-flex align-items-center gap-2">Buat</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('letter.*') ? 'active' : '' }} d-flex align-items-center gap-2 text-tertiary"
+                            href="#">
                             <svg class="bi">
-                                <use xlink:href="#cart" />
+                                <use xlink:href="#file-earmark-text" />
                             </svg>
-                            Tandatangani Laporan Dinas Luar
+                            Buat Surat
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-2" href="#">
+                        <a class="nav-link {{ request()->routeIs('overtimes.create') ? 'active' : '' }} d-flex align-items-center gap-2 text-tertiary"
+                            href="{{ route('overtimes.create') }}">
                             <svg class="bi">
-                                <use xlink:href="#cart" />
+                                <use xlink:href="#report" />
                             </svg>
+                            Buat Laporan Dinas Luar
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link disabled d-flex align-items-center gap-2">Pengaturan</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('password*') ? 'active' : '' }} d-flex align-items-center gap-2 text-tertiary"
+                            href="{{ route('password.show', ['role' => auth()->user()->role->name]) }}">
+                            <svg class="bi">
+                                <use xlink:href="#password" />
+                            </svg>
+                            Ubah Sandi
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link disabled d-flex align-items-center gap-2">Surat dan Laporan</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('letter.*') ? 'active' : '' }} d-flex align-items-center gap-2 text-tertiary"
+                            href="#">
+                            <i class="bi bi-mailbox"></i>
                             Surat Surat
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-2" href="#">
+                        <a class="nav-link {{ request()->routeIs('overtimes.*') && !request()->routeIs('overtimes.create') ? 'active' : '' }} d-flex align-items-center gap-2 text-tertiary"
+                            href="/overtimes">
                             <svg class="bi">
-                                <use xlink:href="#cart" />
+                                <use xlink:href="#calendar3" />
                             </svg>
                             Laporan Dinas Luar
                         </a>
                     </li>
-                @endif
-                @if (auth()->user()->role_id == 1)
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="/attendances">
-                        <svg class="bi">
-                            <use xlink:href="#cart" />
-                        </svg>
-                        Absensi
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="/presences">
-                        <svg class="bi">
-                            <use xlink:href="#cart" />
-                        </svg>
-                        Daftar Kehadiran
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="/employees">
-                        <svg class="bi">
-                            <use xlink:href="#cart" />
-                        </svg>
-                        Kelola Pegawai
-                    </a>
-                </li>
-                @endif
-            </ul>
+                    @if (auth()->user()->role_id == 1)
+                        <li class="nav-item">
+                            <span class="nav-link disabled d-flex align-items-center gap-2">Manajemen</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('attendances.*') ? 'active' : '' }} d-flex align-items-center gap-2 text-tertiary"
+                                href="/attendances">
+                                <i class="bi bi-check-square"></i>
+                                Absensi
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('presences.*') ? 'active' : '' }} d-flex align-items-center gap-2 text-tertiary"
+                                href="/presences">
+                                <i class="bi bi-person-check"></i>
+                                Daftar Kehadiran
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('employees.*') ? 'active' : '' }} d-flex align-items-center gap-2 text-tertiary"
+                                href="/employees">
+                                <svg class="bi">
+                                    <use xlink:href="#people" />
+                                </svg>
+                                Kelola Pegawai
+                            </a>
+                        </li>
+                    @endif
+                </ul>
+                <hr class="my-2">
+                <ul class="nav flex-column mb-auto">
+                    <li class="nav-item">
+                        <form action="{{ route('auth.logout') }}" method="post"
+                            onsubmit="return confirm('Apakah anda yakin ingin keluar?')">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger d-block mt-3">
+                                Keluar
+                            </button>
+                        </form>
+                    </li>
+                </ul>
 
-
-
-
-            <hr class="my-3">
-
-            <ul class="nav flex-column mb-auto">
-
-                <li class="nav-item">
-                    <form action="{{ route('auth.logout') }}" method="post"
-                        onsubmit="return confirm('Apakah anda yakin ingin keluar?')">
-                        @method('DELETE')
-                        @csrf
-                        <button
-                            class="w-full mt-4 d-block bg-transparent border-0 fw-bold text-danger px-3">Keluar</button>
-                    </form>
-                </li>
-            </ul>
+            </div>
         </div>
     </div>
 </div>
