@@ -92,17 +92,19 @@
                     @endif
                     <div
                         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
                         <div class="d-flex align-items-center">
-                            <h1 class="h2">Laporan Dinas Luar</h1>
+                            <h1 class="h2">Surat - Surat</h1>
                         </div>
                         <div class="report-buttons">
                             <button type="button" class="btn btn-primary"
-                                onclick="window.location.href='/overtimes/report/all'">Tampilkan Semua Laporan</button>
+                                onclick="window.location.href='/letters/all'">Tampilkan Semua Surat</button>
                             <button type="button" class="btn btn-secondary"
-                                onclick="window.location.href='/overtimes/report/me'">Tampilkan Laporan Saya</button>
+                                onclick="window.location.href='/letters/me'">Tampilkan Surat Saya</button>
                         </div>
                     </div>
-                    <livewire:overtime-table :condition="request()->condition ?? 'me'" />
+                    {{-- <livewire:overtime-table :condition="request()->condition ?? 'me'" /> --}}
+                    <livewire:letter-table :condition="request()->condition ?? 'me'" />
                 </main>
             </div>
         </div>

@@ -171,8 +171,8 @@
                         <span class="nav-link disabled d-flex align-items-center gap-2">Buat</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('letter.*') ? 'active' : '' }} d-flex align-items-center gap-2 text-tertiary"
-                            href="#">
+                        <a class="nav-link {{ request()->routeIs('letters.create') ? 'active' : '' }} d-flex align-items-center gap-2 text-tertiary"
+                            href="{{ route('letters.create') }}">
                             <svg class="bi">
                                 <use xlink:href="#file-earmark-text" />
                             </svg>
@@ -204,8 +204,8 @@
                         <span class="nav-link disabled d-flex align-items-center gap-2">Surat dan Laporan</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('letter.*') ? 'active' : '' }} d-flex align-items-center gap-2 text-tertiary"
-                            href="#">
+                        <a class="nav-link {{ request()->routeIs('letters.*') && !request()->routeIs('letters.create') ? 'active' : '' }} d-flex align-items-center gap-2 text-tertiary"
+                            href="/letters">
                             <i class="bi bi-mailbox"></i>
                             Surat Surat
                         </a>

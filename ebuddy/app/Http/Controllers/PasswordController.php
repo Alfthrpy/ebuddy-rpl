@@ -9,8 +9,9 @@ class PasswordController extends Controller
     public function showChangeForm()
     {
         $position = auth()->user()->role_id == 2 ? 'pejabat' : 'pegawai';
+        $role = auth()->user()->role_id == 1 ? 'admin' : 'user';
         return view('profile.update-password-form',[
-            'role' => 'user',
+            'role' => $role,
             'position' => $position,
             'title' => 'Update Password'
         ]);

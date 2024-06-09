@@ -55,19 +55,18 @@
         padding: .75rem 1rem;
     }
 
-    .btn-back{
+    .btn-back {
         margin-left: auto;
         margin-top: 10px;
     }
 
-        .section-heading {
+    .section-heading {
         display: flex;
         align-items: center;
         gap: 10px;
         margin-bottom: 10px;
         margin-top: 10px;
     }
-    
 </style>
 
 {{-- <style>
@@ -237,11 +236,10 @@
                                                 <div class="alert alert-success mt-3">
                                                     Laporan ini telah anda setujui.
                                                 </div>
-
                                             @elseif($overtime->status == 'rejected')
-                                            <div class="alert alert-danger mt-3">
-                                                Laporan ini telah anda tolak.
-                                            </div>
+                                                <div class="alert alert-danger mt-3">
+                                                    Laporan ini telah anda tolak.
+                                                </div>
                                             @endif
                                         @else
                                             @if ($overtime->status == 'approved')

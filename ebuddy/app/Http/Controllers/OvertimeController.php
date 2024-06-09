@@ -10,10 +10,11 @@ class OvertimeController extends Controller
 {
     public function index(){
         $position = auth()->user()->role_id == 2 ? 'pejabat' : 'pegawai';
+        $role = auth()->user()->role_id == 1 ? 'admin' : 'user';
         
         return view('overtimes.index',[
             'title' => 'Laporan Dinas Luar',
-            'role' => "user",
+            'role' => $role,
             'position' => $position
         ]);
     }
