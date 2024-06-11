@@ -25,7 +25,7 @@ return new class extends Migration {
             $table->string('status')->default('pending');
             $table->foreignId('user_id_creator')->constrained()->nullable(false); // Ensuring user_id_creator is not nullable
             $table->foreignId('user_id_approver')->constrained()->nullable(false); // Ensuring user_id_approver is not nullable
-            $table->foreignId('template_id')->nullable(false); // Ensuring template_id is not nullable
+            $table->foreignId('template_id')->constrained()->nullable(false); // Ensuring template_id is not nullable
             $table->timestamps();
         });
     }

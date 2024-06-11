@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\Letter;
 use App\Models\Holiday;
+use App\Models\Overtime;
 use App\Models\Permission;
 use App\Models\Presence;
 use Carbon\CarbonPeriod;
@@ -22,9 +24,24 @@ class HomeController extends Controller
         
         $role = auth()->user()->role_id == 2 ? 'pejabat' : 'pegawai';
 
+        $userId = auth()->id(); // Dapatkan ID pengguna saat ini
+
+        $latestApprovedLetter = Letter::where('status', 'approved')
+                                      ->where('user_id_creator', $userId)
+                                      ->latest()
+                                      ->first();
+        
+        $latestApprovedOvertime = Overtime::where('status', 'approved')
+                                          ->where('user_id_creator', $userId)
+                                          ->latest()
+                                          ->first();
+
+
         return view('dashboard.user', [
             "title" => "Beranda",
             "attendances" => $attendances,
+            'latestApprovedLetter' => $latestApprovedLetter,
+            'latestApprovedOvertime' => $latestApprovedOvertime,
             "role" => 'user',
             "position" => $role
         ]);

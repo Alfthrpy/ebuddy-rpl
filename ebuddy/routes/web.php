@@ -10,6 +10,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OvertimeController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\LetterController;
+use App\Http\Controllers\PositionController;
 use App\Http\Middleware\CheckRole;
 use App\Http\Middleware\CheckPosition;
 use App\Http\Middleware\CheckPejabatRole;
@@ -50,7 +51,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/employees/edit/{id}', [EmployeeController::class, 'edit'])->name('employees.edit');
         Route::get('/employees/delete/{id}', [EmployeeController::class, 'delete'])->name('employees.destroy');
 
-        
+        Route::resource('/positions',PositionController::class)->only(['index', 'create']);
+        Route::get('/positions/edit/{id}', [PositionController::class, 'edit'])->name('positions.edit');
+        Route::get('/positions/delete/{id}', [PositionController::class, 'delete'])->name('positions.destroy');
     });
 
 

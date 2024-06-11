@@ -246,6 +246,13 @@
                                 Kelola Pegawai
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('positions.*') ? 'active' : '' }} d-flex align-items-center gap-2 text-tertiary"
+                                href="/positions">
+                                <i class="bi bi-briefcase"></i>
+                                Kelola Jabatan/posisi
+                            </a>
+                        </li>
                     @endif
                 </ul>
                 <hr class="my-2">
