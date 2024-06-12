@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Position;
+use App\Models\Letter;
+use App\Models\Overtime;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -20,6 +22,8 @@ class DashboardController extends Controller
             "userCount" => User::count(),
             'latestUsers' => $latestUsers,
             'latestPositions' => $latestPositions,
+            'letterCount' => Letter::count(),
+            'overtimeCount' => Overtime::count(),
             "role" => 'admin',
             'position' => 'admin'
         ]);

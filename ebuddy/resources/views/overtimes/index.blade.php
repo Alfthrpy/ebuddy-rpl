@@ -97,9 +97,13 @@
                         </div>
                         <div class="report-buttons">
                             <button type="button" class="btn btn-primary"
-                                onclick="window.location.href='/overtimes/report/all'">Tampilkan Semua Laporan</button>
+                                onclick="window.location.href='/overtimes/report/all'">Semua Laporan</button>
                             <button type="button" class="btn btn-secondary"
-                                onclick="window.location.href='/overtimes/report/me'">Tampilkan Laporan Saya</button>
+                                onclick="window.location.href='/overtimes/report/me'">Laporan Saya</button>
+                            @if (auth()->user()->role_id == 2 || auth()->user()->role_id == 1)
+                                <button type="button" class="btn btn-warning"
+                                    onclick="window.location.href='/overtimes/report/pending'">Laporan yang perlu persetujuan</button>
+                            @endif()
                         </div>
                     </div>
                     <livewire:overtime-table :condition="request()->condition ?? 'me'" />

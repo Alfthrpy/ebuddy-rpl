@@ -98,9 +98,13 @@
                         </div>
                         <div class="report-buttons">
                             <button type="button" class="btn btn-primary"
-                                onclick="window.location.href='/letters/all'">Tampilkan Semua Surat</button>
+                                onclick="window.location.href='/letters/all'">Semua Surat</button>
                             <button type="button" class="btn btn-secondary"
-                                onclick="window.location.href='/letters/me'">Tampilkan Surat Saya</button>
+                                onclick="window.location.href='/letters/me'">Surat Saya</button>
+                            @if(auth()->user()->role_id == 2 || auth()->user()->role_id == 1)
+                            <button type="button" class="btn btn-warning"
+                                onclick="window.location.href='/letters/pending'">Surat yang perlu persetujuan</button>
+                            @endif()
                         </div>
                     </div>
                     {{-- <livewire:overtime-table :condition="request()->condition ?? 'me'" /> --}}

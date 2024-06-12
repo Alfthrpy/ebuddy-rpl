@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+
+use Illuminate\Support\Facades\Auth;
 use App\Models\Overtime;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -42,7 +44,8 @@ final class OvertimeTable extends PowerGridComponent
         if ($this->condition == 'me') {
             $query->where('user_id_creator', auth()->id());
         } elseif ($this->condition == 'pending') {
-            $query->where('status', 'pending');
+            $query->where('status', 'pending')
+                  ->where('user_id_approver', Auth::id());
             
         } else if($this->condition == 'all'){
 

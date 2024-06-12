@@ -111,7 +111,7 @@
                                         <h5 class="card-title">Komentar Penyetuju</h5>
                                     </div>
                                     <div class="card-body">
-                                        
+
                                         <p>{{ $letter->comment ?? 'Tidak ada komentar' }}</p>
                                     </div>
                                 </div>
@@ -122,41 +122,45 @@
                                     <div class="card-body">
                                         @if (auth()->user()->id == $letter->user_id_approver)
                                             @if ($letter->status == 'pending')
-                                                <form method="POST" action="{{ route('letters.approve', $letter->id) }}" enctype="multipart/form-data">
+                                                <form method="POST" action="{{ route('letters.approve', $letter->id) }}"
+                                                    enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="mb-3">
                                                         <textarea class="form-control" name="approver_comment" placeholder="Isi komentar"></textarea>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="signature">Tanda Tangan</label>
-                                                        <input type="file" class="form-control" name="signature" id="signature" accept="image/*">
+                                                        <input type="file" class="form-control" name="signature"
+                                                            id="signature" accept="image/*">
                                                     </div>
                                                     <button type="submit" class="btn btn-success">Approve</button>
-                                                    <button type="submit" formaction="{{ route('letters.reject', $letter->id) }}" class="btn btn-danger">Reject</button>
+                                                    <button type="submit"
+                                                        formaction="{{ route('letters.reject', $letter->id) }}"
+                                                        class="btn btn-danger">Reject</button>
                                                 </form>
                                             @elseif($letter->status == 'approved')
                                                 <div class="alert alert-success mt-3">
-                                                    Laporan ini telah anda setujui.
+                                                    Surat ini telah anda setujui.
                                                 </div>
                                             @elseif($letter->status == 'rejected')
                                                 <div class="alert alert-danger mt-3">
-                                                    Laporan ini telah anda tolak.
+                                                    Surat ini telah anda tolak.
                                                 </div>
                                             @endif
                                         @else
                                             @if ($letter->status == 'approved')
                                                 <div class="alert alert-success mt-3">
-                                                    Laporan ini telah di-{{ $letter->status }}.
+                                                    Surat ini telah di-{{ $letter->status }}.
                                                 </div>
                                             @elseif($letter->status == 'rejected')
                                                 <div class="alert alert-danger mt-3">
-                                                    Laporan ini ditolak!.
+                                                    Surat ini ditolak!.
                                                 </div>
                                             @endif
                                         @endif
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -165,19 +169,19 @@
         </div>
 
         @push('script')
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var content = @json($content);
-                console.log(content);
-                var iframe = document.getElementById('letter-iframe');
-                var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var content = @json($content);
+                    console.log(content);
+                    var iframe = document.getElementById('letter-iframe');
+                    var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-                iframeDoc.open();
-                iframeDoc.write(content);
-                iframeDoc.close();
-            });
-        </script>
-    @endpush
+                    iframeDoc.open();
+                    iframeDoc.write(content);
+                    iframeDoc.close();
+                });
+            </script>
+        @endpush
     </body>
 
 

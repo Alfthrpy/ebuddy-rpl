@@ -92,6 +92,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card   shadow">
+                                <div class="card-body">
+                                    <h6 class="card-title">Surat Dibuat</h6>
+                                    <h4 class="card-text">{{ $letterCount }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card   shadow">
+                                <div class="card-body">
+                                    <h6 class="card-title">Laporan Dibuat</h6>
+                                    <h4 class="card-text">{{ $overtimeCount }}</h4>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4 mb-4">

@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Position;
 use App\Models\Role;
+use App\Models\Overtime;
+use App\Models\Letter;
 use App\Models\Template;
 use Illuminate\Database\Seeder;
 
@@ -237,6 +239,8 @@ class DatabaseSeeder extends Seeder
         
 
         // Uncomment baris berikut jika ingin membuat user menggunakan factory
-        // User::factory(10)->create();
+        User::factory(10)->create();
+        Overtime::factory(10)->create();
+        Letter::factory(10)->create();
     }
 }

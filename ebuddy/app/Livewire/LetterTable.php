@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Letter;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Button;
@@ -42,8 +43,8 @@ final class LetterTable extends PowerGridComponent
         if ($this->condition == 'me') {
             $query->where('user_id_creator', auth()->id());
         } elseif ($this->condition == 'pending') {
-            $query->where('status', 'pending');
-            
+            $query->where('status', 'pending')
+                  ->where('user_id_approver', Auth::id());
         } else if($this->condition == 'all'){
 
         }

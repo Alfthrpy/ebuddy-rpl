@@ -11,6 +11,7 @@ use App\Http\Controllers\OvertimeController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\LetterController;
 use App\Http\Controllers\PositionController;
+use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckRole;
 use App\Http\Middleware\CheckPosition;
 use App\Http\Middleware\CheckPejabatRole;
@@ -35,7 +36,7 @@ Route::middleware(RedirectIfAuthenticated::class)->group(function () {
 });
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(Authenticate::class)->group(function () {
     // Routes for all authenticated users
     Route::get('/dashboard/user', [HomeController::class, 'index'])->name('dashboard.user');
     Route::get('/absensi/{attendance}', [HomeController::class, 'show'])->name('dashboard.show');
@@ -101,7 +102,7 @@ Route::get('/', function () {
         'title' => 'Home'
     ];
     return view('home.home', $data);
-});
+})->name('index.home');
 
 Route::get('/about', function () {
     $data = [
