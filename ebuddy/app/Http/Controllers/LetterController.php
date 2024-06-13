@@ -183,15 +183,21 @@ class LetterController extends Controller
 
     public function delete($id)
     {
-        // Cari user berdasarkan ID
+        // Find the letter based on the ID
         $letter = Letter::find($id);
     
         if ($letter) {
+            // Delete the associated image file from storage
+            if ($letter->image_path) {
+                Storage::delete($letter->image_path);
+            }
+    
+            // Delete the letter instance
             $letter->delete();
     
-            return redirect()->route('letters.index')->with('success', 'Surat berhasil dihapus.');
+            return redirect()->route('letters.index')->with('success', 'Letter deleted successfully.');
         } else {
-            return redirect()->route('letters.index')->with('error', 'Surat tidak ditemukan.');
+            return redirect()->route('letters.index')->with('error', 'Letter not found.');
         }
     }
 }

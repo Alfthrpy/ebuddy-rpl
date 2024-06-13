@@ -97,6 +97,60 @@
                                         </ul>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col mt-3 mb-3">
+                                        <div class="card shadow-sm border-success">
+                                            <div class="card-header bg-success text-white">
+                                                <h5 class="mb-0"><i class="bi bi-file-earmark-check"></i> Surat yang Baru Disetujui</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                @if ($latestApprovedLetter)
+                                                <a href="{{ route('letters.show', $latestApprovedLetter->id) }}" class="list-group-item d-flex justify-content-between align-items-start py-3 border rounded">
+                                                    <div class="ms-2 me-auto">
+                                                        <div class="fw-bold">{{ $latestApprovedLetter->subject }}</div>
+                                                        <p class="mb-0">{{ $latestApprovedLetter->no_letter }}</p>
+                                                    </div>
+                                                </a>
+                                                    <div class="mb-0">
+                                                        <span class="fw-bold">Diperbarui pada:</span>
+                                                        <div>{{ $latestApprovedLetter->updated_at->format('l, d M Y') }}</div>
+                                                    </div>
+                                                @else
+                                                    <div>Tidak ada surat yang telah disetujui.</div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col mt-3 mb-3">
+                                        <div class="card shadow-sm border-success">
+                                            <div class="card-header bg-success text-white">
+                                                <h5 class="mb-0"><i class="bi bi-file-earmark-text"></i> Laporan yang Baru Disetujui</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                @if ($latestApprovedOvertime)
+                                                <a href="{{ route('overtimes.show', $latestApprovedOvertime->id) }}" class="list-group-item d-flex justify-content-between align-items-start py-3 border rounded">
+                                                    <div class="ms-2 me-auto">
+                                                        <div class="fw-bold">{{ $latestApprovedOvertime->objective }}</div>
+                                                        <p class="mb-0">{{ $latestApprovedOvertime->place }}</p>
+                                                    </div>
+                                                </a>
+                                                    <div class="mb-0">
+                                                        <span class="fw-bold">Diperbarui pada:</span>
+                                                        <div>{{ $latestApprovedOvertime->updated_at->format('l, d M Y') }}</div>
+                                                    </div>
+                                                @else
+                                                    <div>Tidak ada laporan yang telah disetujui.</div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
                             </div>
                             <div class="col-md-4">
                                 <div class="card shadow-sm mb-2">
@@ -122,54 +176,6 @@
                                                 <span>{{ auth()->user()->created_at->diffForHumans() }} ({{ auth()->user()->created_at->format('d M Y') }})</span>
                                             </li>
                                         </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 mb-2">
-                                <div class="card shadow-sm border-success">
-                                    <div class="card-header bg-success text-white">
-                                        <h5 class="mb-0"><i class="bi bi-file-earmark-check"></i> Surat yang Baru Disetujui</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        @if ($latestApprovedLetter)
-                                        <a href="{{ route('letters.show', $latestApprovedLetter->id) }}" class="list-group-item d-flex justify-content-between align-items-start py-3 border rounded">
-                                            <div class="ms-2 me-auto">
-                                                <div class="fw-bold">{{ $latestApprovedLetter->subject }}</div>
-                                                <p class="mb-0">{{ $latestApprovedLetter->no_letter }}</p>
-                                            </div>
-                                        </a>
-                                            <div class="mb-0">
-                                                <span class="fw-bold">Diperbarui pada:</span>
-                                                <div>{{ $latestApprovedLetter->updated_at->format('l, d M Y') }}</div>
-                                            </div>
-                                        @else
-                                            <div>Tidak ada surat yang telah disetujui.</div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-2">
-                                <div class="card shadow-sm border-success">
-                                    <div class="card-header bg-success text-white">
-                                        <h5 class="mb-0"><i class="bi bi-file-earmark-text"></i> Laporan yang Baru Disetujui</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        @if ($latestApprovedOvertime)
-                                        <a href="{{ route('overtimes.show', $latestApprovedOvertime->id) }}" class="list-group-item d-flex justify-content-between align-items-start py-3 border rounded">
-                                            <div class="ms-2 me-auto">
-                                                <div class="fw-bold">{{ $latestApprovedOvertime->objective }}</div>
-                                                <p class="mb-0">{{ $latestApprovedOvertime->place }}</p>
-                                            </div>
-                                        </a>
-                                            <div class="mb-0">
-                                                <span class="fw-bold">Diperbarui pada:</span>
-                                                <div>{{ $latestApprovedOvertime->updated_at->format('l, d M Y') }}</div>
-                                            </div>
-                                        @else
-                                            <div>Tidak ada laporan yang telah disetujui.</div>
-                                        @endif
                                     </div>
                                 </div>
                             </div>
