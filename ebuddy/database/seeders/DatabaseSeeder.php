@@ -65,6 +65,10 @@ class DatabaseSeeder extends Seeder
             'position_id' => 1,
         ]);
 
+        $letter1 = Letter::create([
+            
+        ]);
+
         $template1 = Template::create([
             'nama_template' => 'Surat Pengumuman',
             'template' => '<!DOCTYPE html>

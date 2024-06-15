@@ -144,6 +144,14 @@
         font-weight: bold;
         /* Cetak tebal */
     }
+    .toast-custom-buttons {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+        .toast-custom-buttons .btn {
+            margin: 0 5px;
+        }
 </style>
 
 
@@ -258,14 +266,14 @@
                 <hr class="my-2">
                 <ul class="nav flex-column mb-auto">
                     <li class="nav-item">
-                        <form action="{{ route('auth.logout') }}" method="post"
-                            onsubmit="return confirm('Apakah anda yakin ingin keluar?')">
+                        <form id="logout-form" action="{{ route('auth.logout') }}" method="post"
+                            style="display: none;">
                             @method('DELETE')
                             @csrf
-                            <button class="btn btn-danger d-block mt-3">
-                                Keluar
-                            </button>
                         </form>
+                        <button id="logout-button" class="btn btn-danger d-block mt-3">
+                            Keluar
+                        </button>
                     </li>
                 </ul>
 
@@ -273,3 +281,40 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('logout-button').addEventListener('click', function(e) {
+        e.preventDefault();
+        toastr.warning('Apakah anda yakin ingin keluar?', 'Konfirmasi Logout', {
+            closeButton: true,
+            progressBar: true,
+            positionClass: 'toast-top-center',
+            timeOut: 0,
+            extendedTimeOut: 0,
+            tapToDismiss: false,
+            onShown: function() {
+                const toast = document.querySelector('.toast-warning');
+                const buttonsContainer = document.createElement('div');
+                buttonsContainer.classList.add('toast-custom-buttons');
+
+                const yesButton = document.createElement('button');
+                yesButton.innerText = 'Ya';
+                yesButton.classList.add('btn', 'btn-danger', 'btn-sm');
+                yesButton.onclick = function() {
+                    document.getElementById('logout-form').submit();
+                };
+
+                const noButton = document.createElement('button');
+                noButton.innerText = 'Tidak';
+                noButton.classList.add('btn', 'btn-secondary', 'btn-sm');
+                noButton.onclick = function() {
+                    toastr.clear();
+                };
+
+                buttonsContainer.appendChild(yesButton);
+                buttonsContainer.appendChild(noButton);
+                toast.appendChild(buttonsContainer);
+            }
+        });
+    });
+</script>

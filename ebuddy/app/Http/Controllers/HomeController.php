@@ -19,8 +19,7 @@ class HomeController extends Controller
             // ->with('positions')
             ->forCurrentUser(auth()->user()->position_id)
             ->get()
-            ->sortByDesc('data.is_end')
-            ->sortByDesc('data.is_start');
+            ->sortByDesc('batas_start_time');
         
         $role = auth()->user()->role_id == 2 ? 'pejabat' : 'pegawai';
 

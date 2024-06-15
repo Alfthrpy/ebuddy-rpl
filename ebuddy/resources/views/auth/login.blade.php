@@ -30,23 +30,9 @@
 </style>
 
 @section('base')
-    <div class="position-fixed top-0 end-0 p-3" style="z-index: 5">
-        @if (session()->has('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @elseif (session()->has('error'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{ session('error') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-    </div>
-
     <div class="d-flex align-items-center justify-content-center min-vh-100 py-4">
         <main class="form-signin w-100 m-auto">
-            <form method="POST" action="{{ route('auth.login') }}" id="form-login">
+            <form id="form-login">
                 @csrf
                 <h1 class="h3 mb-3 fw-normal text-center">Please sign in</h1>
 
@@ -72,4 +58,47 @@
             </form>
         </main>
     </div>
+    @push('script')
+        <script>
+            toastr.options.progressBar = true;
+
+            $(document).ready(function() {
+                $('#form-login').submit(function(e) {
+                    e.preventDefault();
+                    var formData = $(this).serialize();
+                    $.ajax({
+                        url: "{{ route('auth.login') }}",
+                        type: "POST",
+                        data: formData,
+                        dataType: 'json',
+                        success: function(response) {
+                            toastr.success(response
+                            .message); // Tampilkan toast dengan pesan dari backend
+                            toastr.options.progressBar = true;
+                            // Redirect berdasarkan role_id setelah delay
+                            setTimeout(function() {
+                                if (response.role_id === 1) {
+                                    window.location.href = "{{ route('dashboard.admin') }}";
+                                } else if (response.role_id === 2 || response.role_id ===
+                                    3) {
+                                    window.location.href = "{{ route('dashboard.user') }}";
+                                } else {
+                                    toastr.error('Role not recognized');
+                                }
+                            },
+                            1500); // Delay 3 detik sebelum redirect (sesuaikan durasi sesuai kebutuhan)
+                        },
+                        error: function(xhr, status, error) {
+                            toastr.error(xhr.responseJSON
+                            .message); // Tampilkan toast error jika login gagal
+                        }
+                    });
+                });
+            });
+
+            @if (session()->has('success'))
+                toastr.success("{{ session('success') }}");
+            @endif
+        </script>
+    @endpush
 @endsection

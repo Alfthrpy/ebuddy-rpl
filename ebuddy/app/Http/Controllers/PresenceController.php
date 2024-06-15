@@ -14,7 +14,7 @@ class PresenceController extends Controller
 {
     public function index()
     {
-        $attendances = Attendance::all()->sortByDesc('data.is_end')->sortByDesc('data.is_start');
+        $attendances = Attendance::all()->sortByDesc('batas_start_time');
 
         return view('presences.index', [
             "title" => "Daftar Absensi Dengan Kehadiran",

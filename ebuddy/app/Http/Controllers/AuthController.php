@@ -8,32 +8,35 @@ use App\Http\Requests\LoginRequests\LoginRequest;
 
 class AuthController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $data = [
             'title' => 'Login',
         ];
-        return view('auth.login',$data);
+        return view('auth.login', $data);
     }
 
     public function auth(Request $request)
     {
-        $remember = $request->boolean('remember');
-        $credentials = $request->only(['email', 'password']);
+        $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials, $remember)) {
-            request()->session()->regenerate();
-            if(auth()->user()->isPegawai()){
-                $redirect_to = route('dashboard.user',['role'=>'pegawai']);
-            } else if(auth()->user()->isPejabat()) {
-                $redirect_to = route('dashboard.user',['role'=>'pejabat']);
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
 
-            } else if(auth()->user()->isAdmin()){
-                $redirect_to = route('dashboard.admin',['role'=>'admin']);
-            }
-            return redirect($redirect_to)->with('success', 'Login berhasil!');
+            $user = Auth::user();
+            $role_id = $user->role_id;
+
+            // Mengembalikan respons JSON dengan role_id pengguna
+            return response()->json(
+                [
+                    'message' => 'Login successful',
+                    'role_id' => $role_id,
+                ],
+                200,
+            );
         }
 
-        return redirect()->back()->with('error','Login Gagal!');
+        return response()->json(['message' => 'Invalid credentials'], 401);
     }
 
     public function logout()
