@@ -70,45 +70,43 @@
         </main>
     </div>
     @push('script')
-        <script>
-            toastr.options.progressBar = true;
-
-            $(document).ready(function() {
-                $('#form-login').submit(function(e) {
-                    e.preventDefault();
-                    var formData = $(this).serialize();
-                    $.ajax({
-                        url: "{{ route('auth.login') }}",
-                        type: "POST",
-                        data: formData,
-                        dataType: 'json',
-                        success: function(response) {
-                            toastr.success(response
-                            .message); // Tampilkan toast dengan pesan dari backend
-                            toastr.options.progressBar = true;
-                            // Redirect berdasarkan role_id setelah delay
-                            setTimeout(function() {
-                                if (response.role_id === 1) {
-                                    window.location.href = "{{ route('dashboard.admin') }}";
-                                } else if (response.role_id === 2 || response.role_id ===
-                                    3) {
-                                    window.location.href = "{{ route('dashboard.user') }}";
-                                } else {
-                                    toastr.error('Role not recognized');
-                                }
-                            },
-                            1500); // Delay 1.5 detik sebelum redirect (sesuaikan durasi sesuai kebutuhan)
-                        },
-                        error: function(xhr, status, error) {
-                            toastr.error('Login Gagal'); // Tampilkan toast error jika login gagal
-                        }
-                    });
+    <script>
+        toastr.options.progressBar = true;
+    
+        $(document).ready(function() {
+            $('#form-login').submit(function(e) {
+                e.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: "{{ secure_url(route('auth.login')) }}", // Menggunakan secure_url
+                    type: "POST",
+                    data: formData,
+                    dataType: 'json',
+                    success: function(response) {
+                        toastr.success(response.message); // Tampilkan toast dengan pesan dari backend
+                        toastr.options.progressBar = true;
+                        // Redirect berdasarkan role_id setelah delay
+                        setTimeout(function() {
+                            if (response.role_id === 1) {
+                                window.location.href = "{{ secure_url(route('dashboard.admin')) }}"; // Menggunakan secure_url
+                            } else if (response.role_id === 2 || response.role_id === 3) {
+                                window.location.href = "{{ secure_url(route('dashboard.user')) }}"; // Menggunakan secure_url
+                            } else {
+                                toastr.error('Role not recognized');
+                            }
+                        }, 1500); // Delay 1.5 detik sebelum redirect (sesuaikan durasi sesuai kebutuhan)
+                    },
+                    error: function(xhr, status, error) {
+                        toastr.error('Login Gagal'); // Tampilkan toast error jika login gagal
+                    }
                 });
             });
-
-            @if (session()->has('success'))
-                toastr.success("{{ session('success') }}");
-            @endif
-        </script>
+        });
+    
+        @if (session()->has('success'))
+            toastr.success("{{ session('success') }}");
+        @endif
+    </script>
+    
     @endpush
 @endsection
