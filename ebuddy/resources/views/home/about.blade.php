@@ -2,6 +2,63 @@
 
 @push('style')
 <link href="css/carousel.css" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    .container.marketing {
+        margin-top: 50px;
+    }
+
+    .bd-placeholder-img {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .featurette-heading {
+        font-weight: 700;
+    }
+
+    .text-body-secondary {
+        color: #6c757d;
+    }
+
+    .btn-secondary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-secondary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    .featurette-divider {
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .welcome-section {
+        background: url('https://static.pajakku.com/portal/uploads/webp/f50e9a6d-af76-4b4b-951d-c847a104bc0c.webp') no-repeat center center;
+        background-size: cover;
+        color: white;
+        text-align: center;
+        padding: 100px 0;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .welcome-section h1 {
+        font-size: 3em;
+        font-weight: 700;
+    }
+
+    .welcome-section p {
+        font-size: 1.5em;
+    }
+</style>
 @endpush
 
 @section('base')

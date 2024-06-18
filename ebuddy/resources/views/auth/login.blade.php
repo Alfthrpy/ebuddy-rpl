@@ -5,11 +5,16 @@
     html,
     body {
         height: 100%;
+        background: url('https://static.pajakku.com/portal/uploads/webp/f50e9a6d-af76-4b4b-951d-c847a104bc0c.webp') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
     }
 
     .form-signin {
         max-width: 330px;
         padding: 1rem;
+        background: rgba(255, 255, 255, 0.8); /* semi-transparent background */
+        border-radius: 0.5rem;
     }
 
     .form-signin .form-floating:focus-within {
@@ -26,6 +31,12 @@
         margin-bottom: 10px;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
+    }
+
+    .d-flex {
+        background: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
+        padding: 20px;
+        border-radius: 10px;
     }
 </style>
 
@@ -86,7 +97,7 @@
                                     toastr.error('Role not recognized');
                                 }
                             },
-                            1500); // Delay 3 detik sebelum redirect (sesuaikan durasi sesuai kebutuhan)
+                            1500); // Delay 1.5 detik sebelum redirect (sesuaikan durasi sesuai kebutuhan)
                         },
                         error: function(xhr, status, error) {
                             toastr.error(xhr.responseJSON
