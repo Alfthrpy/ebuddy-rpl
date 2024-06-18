@@ -100,8 +100,7 @@
                             1500); // Delay 1.5 detik sebelum redirect (sesuaikan durasi sesuai kebutuhan)
                         },
                         error: function(xhr, status, error) {
-                            toastr.error(xhr.responseJSON
-                            .message); // Tampilkan toast error jika login gagal
+                            toastr.error('Login Gagal'); // Tampilkan toast error jika login gagal
                         }
                     });
                 });
