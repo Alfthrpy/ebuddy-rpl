@@ -69,6 +69,7 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::get('overtimes/report/show/{id}', [OvertimeController::class, 'show'])->name('overtimes.show');
     Route::get('overtimes/report/edit/{id}', [OvertimeController::class, 'edit'])->name('overtimes.edit');
     Route::get('overtimes/report/delete/{id}', [OvertimeController::class, 'delete'])->name('overtimes.destroy');
+    Route::get('overtimes/download/{id}', [OvertimeController::class, 'download'])->name('overtimes.download');
     
 
     // Letter routes
@@ -77,6 +78,7 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::get('letters/show/{id}', [LetterController::class, 'show'])->name('letters.show');
     route::get('letters/edit/{id}', [LetterController::class, 'edit'])->name('letters.edit');
     route::get('letters/delete/{id}', [LetterController::class, 'delete'])->name('letters.destroy');
+    Route::get('letters/download/{id}', [LetterController::class, 'download'])->name('letters.download');
     
 
     // Presence routes

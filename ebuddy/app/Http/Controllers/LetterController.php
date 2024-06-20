@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Template;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Letter;
+use Barryvdh\DomPDF\Facade\Pdf;
+
+
 
 class LetterController extends Controller
 {
@@ -199,5 +202,77 @@ class LetterController extends Controller
         } else {
             return redirect()->route('letters.index')->with('error', 'Letter not found.');
         }
+    }
+
+    public function download($id)
+    {
+        set_time_limit(300);
+    
+        // Retrieve the letter
+        $letter = Letter::findOrFail($id);
+    
+        // Days and months in Indonesian
+        $days = [
+            'Sunday' => 'Minggu',
+            'Monday' => 'Senin',
+            'Tuesday' => 'Selasa',
+            'Wednesday' => 'Rabu',
+            'Thursday' => 'Kamis',
+            'Friday' => 'Jumat',
+            'Saturday' => 'Sabtu'
+        ];
+        
+        $months = [
+            'January' => 'Januari',
+            'February' => 'Februari',
+            'March' => 'Maret',
+            'April' => 'April',
+            'May' => 'Mei',
+            'June' => 'Juni',
+            'July' => 'Juli',
+            'August' => 'Agustus',
+            'September' => 'September',
+            'October' => 'Oktober',
+            'November' => 'November',
+            'December' => 'Desember'
+        ];
+    
+        // Format the date
+        $date_out = strtotime($letter->date_out);
+        $day = $days[date('l', $date_out)];
+        $date = date('d', $date_out);
+        $month = $months[date('F', $date_out)];
+        $year = date('Y', $date_out);
+        $formatted_date = "$day, $date $month $year";
+    
+        // Data to pass to the Blade view
+        $data = [
+            'date_out' => $formatted_date,
+            'no_letter' => $letter->no_letter,
+            'attachment' => $letter->attachment,
+            'subject' => $letter->subject,
+            'destination' => $letter->destination,
+            'destination_position' => $letter->destination_position,
+            'content' => $letter->content,
+            'wm_creator' => $letter->wm_creator ? ltrim(Storage::url($letter->wm_creator), '/') : '', // Check if wm_creator exists
+            'creator_name' => $letter->creator->name,
+            'creator_position' => $letter->creator->position->name,
+            'creator_id' => $letter->creator->id,
+            'wm_approver' => $letter->wm_approver ? ltrim(Storage::url($letter->wm_approver), '/') : '', // Check if wm_approver exists
+            'approver_name' => $letter->approver->name,
+            'approver_position' => $letter->approver->position->name,
+            'approver_id' => $letter->approver->id,
+        ];
+    
+        // Generate the PDF
+        $pdf = Pdf::loadView('letters.pdf', $data);
+        
+        return $pdf->stream('surat_' . $letter->no_letter . '.pdf');
+        // Debugging (optional): Uncomment to check if data is correct
+        // dd($data);
+    
+        return $pdf->download('surat_' . $letter->no_letter . '.pdf');
+
+        return view('letters.pdf',$data);
     }
 }

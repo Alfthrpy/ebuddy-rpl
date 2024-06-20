@@ -159,6 +159,8 @@
                                             @endif
                                         @endif
                                     </div>
+                                    <a href="{{ route('letters.download', $letter->id) }}" class="btn btn-outline">Download PDF</a>
+
                                 </div>
 
                             </div>

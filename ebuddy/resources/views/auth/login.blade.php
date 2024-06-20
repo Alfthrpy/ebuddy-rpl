@@ -69,6 +69,7 @@
             </form>
         </main>
     </div>
+    <p class="text-body-secondary text-center">Admin (083838389393)</p>
     @push('script')
     <script>
         toastr.options.progressBar = true;

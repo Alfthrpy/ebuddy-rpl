@@ -253,6 +253,7 @@
                                             @endif
                                         @endif
                                     </div>
+                                    <a href="{{ route('overtimes.download', $overtime->id) }}" class="btn btn-outline">Download PDF</a>
                                 </div>
                             </div>
                         </div>

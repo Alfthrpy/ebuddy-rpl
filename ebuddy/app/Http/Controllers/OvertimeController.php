@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Overtime;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class OvertimeController extends Controller
@@ -94,5 +94,24 @@ class OvertimeController extends Controller
         } else {
             return redirect()->route('overtimes.index')->with('error', 'Laporan tidak ditemukan.');
         }
+    }
+
+    public function download(Request $request){
+        $position = auth()->user()->role_id == 2 ? 'pejabat' : 'pegawai';
+        $overtime = Overtime::query()->with('creator','approver')->where('id', '=', $request->id)->first();
+
+        $data = [
+            'creator' => $overtime->creator->name,
+            'objective' => $overtime->objective,
+            'place' => $overtime->place,
+            'start_date' => $overtime->start_date,
+            'end_date' => $overtime->end_date,
+            'approver' => $overtime->approver->name,
+            'result' => $overtime->result,
+            'status' => $overtime->status
+        ];
+        $pdf = Pdf::loadView('overtimes.pdf', $data);
+        return $pdf->stream('laporan_' . $overtime->creator->name . '.pdf');
+        
     }
 }
