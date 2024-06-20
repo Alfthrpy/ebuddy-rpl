@@ -91,7 +91,7 @@ Proyek ini dilisensikan di bawah lisensi MIT. Lihat file `LICENSE` untuk informa
 
 ## Kontak
 
-Jika Anda memiliki pertanyaan atau saran, silakan hubungi kami melalui email di [email@example.com].
+Jika Anda memiliki pertanyaan atau saran, silakan hubungi kami melalui email di [alfthr@gmail.com].
 
 ---
 
